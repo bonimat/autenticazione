@@ -13,10 +13,5 @@ class GenericTest extends TestCase {
         $this->assertTrue(true);
     }
 
-    public function testPOST() {
-        $this->assertTrue(true);
-
-    }
-
 
 }

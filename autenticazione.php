@@ -1,36 +1,27 @@
 <?php
+include_once(__DIR__. "/config.php");
+
+global $CONFIG, $PAGINA;
 
 session_start();
+$PAGINA = $_SESSION['pagina'];
 
 $user = "user";
 $pass = "password";
 
-$page_to="http://192.168.33.11/index.php";
+$page_to=$CONFIG->webroot.$PAGINA;
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
 
-    if ( $_POST['username'] == $user ){
-        echo "uno";
-    }
-
-    if ( $_POST['password']== $pass ){
-        echo "due";
-    }
-
     if ( $_POST['username'] == $user && $_POST['password'] == $pass) {
 
-        $_SESSION['isLogged'] = "true";
+        $_SESSION['isLogged'] = true;
         header("Location:".$page_to);
-        echo "ok ".$page_to;
     }
     else {
 
         header("Location:$page_to?error_login=1");
-        echo "err ".$page_to;
     }
 }
-else {
 
-   // header("Location:$page_to?error_login=1");
-}
 ?>
